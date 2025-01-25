@@ -3,8 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Calendar, Clock2 as Clock24, FileText, MessageSquare, Zap,Globe, Rocket, Check } from "lucide-react";
+import { Calendar, Clock2 as Clock24, FileText, MessageSquare, Users, Zap, Building2, HeartPulse, Globe, Rocket, Check, Bell, Phone } from "lucide-react";
 import { Navigation } from "@/components/ui/navigation";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -16,26 +17,36 @@ export default function Home() {
           <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px]" />
           <div className="container">
             <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-muted px-4 py-1.5 rounded-full text-sm mb-6">
+              <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full text-sm mb-6 text-white">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
                 </span>
                 Tecnologia para Clínicas
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-8 gradient-text">
-                Atendimento 24h, agendamentos automáticos e prontuário médico customizável
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-8 text-white">
+              Atendimento 24h, agendamentos automáticos e prontuário médico customizável
               </h1>
-              <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+              <p className="text-xl text-white/80 mb-12 max-w-2xl mx-auto">
                 Otimize sua clínica com tecnologia inteligente que combina agilidade, personalização e eficiência para atender todas as especialidades.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="gap-2 hover-card-animation">
-                  Veja como funciona <span className="ml-2">➡️</span>
+                <Button size="lg" className="gap-2 hover-card-animation bg-white text-blue-600 hover:bg-white/90">
+                  Assista ao vídeo e veja como funciona! <span className="ml-2">➡️</span>
                 </Button>
-                <Button size="lg" variant="outline" className="gap-2 hover-card-animation">
+                <Button size="lg" variant="outline" className="gap-2 hover-card-animation border-white/20 text-white hover:bg-white/10">
                   Agende uma demo
                 </Button>
+              </div>
+              <div className="macbook-container">
+                <Image
+                  src="https://technext.github.io/beam/imgs/macbook.png"
+                  alt="Sistema em ação"
+                  width={1200}
+                  height={750}
+                  className="macbook-image"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -44,27 +55,37 @@ export default function Home() {
         {/* Benefits Section */}
         <section id="benefits" className="section-padding bg-muted/50 relative overflow-hidden">
           <div className="container">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
                   icon: <Clock24 className="w-10 h-10 text-primary" />,
-                  title: "Atendimento contínuo",
+                  title: "Agendamentos 24h",
                   description: "Receba agendamentos 24h por dia, mesmo fora do horário comercial",
                 },
                 {
-                  icon: <Zap className="w-10 h-10 text-primary" />,
-                  title: "Agilize tarefas",
-                  description: "Reduza a carga de trabalho da sua equipe de secretaria",
+                  icon: <MessageSquare className="w-10 h-10 text-primary" />,
+                  title: "Chatbots Autônomos",
+                  description: "Otimize o atendimento, reduza a carga de trabalho da equipe e aumente a satisfação dos pacientes",
+                },
+                {
+                  icon: <Phone className="w-10 h-10 text-primary" />,
+                  title: "Integração WhatsApp",
+                  description: "Comunicação direta e eficiente com seus pacientes",
+                },
+                {
+                  icon: <Bell className="w-10 h-10 text-primary" />,
+                  title: "Lembretes Automáticos",
+                  description: "Garanta que os pacientes não percam consultas com lembretes automáticos",
                 },
                 {
                   icon: <Globe className="w-10 h-10 text-primary" />,
-                  title: "Fortaleça sua presença online",
-                  description: "Divulgue sua clínica e conquiste novos pacientes",
+                  title: "Presença Online",
+                  description: "Divulgue sua clínica e conquiste novos pacientes com uma landing page personalizada",
                 },
                 {
                   icon: <Rocket className="w-10 h-10 text-primary" />,
-                  title: "Mais agilidade",
-                  description: "Informações e consultas rápidas e acessíveis",
+                  title: "Mais Agilidade",
+                  description: "Informações e consultas rápidas e acessíveis para seus pacientes",
                 },
               ].map((benefit, index) => (
                 <Card key={index} className="border-none shadow-lg hover-card-animation bg-background/60 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -92,23 +113,23 @@ export default function Home() {
               {[
                 {
                   icon: <MessageSquare className="w-8 h-8" />,
-                  title: "Chatbots inteligentes",
-                  description: "Responda automaticamente a perguntas, realize agendamentos, cancelamentos e reagendamentos com IA avançada",
+                  title: "Chatbots Autônomos",
+                  description: "Agendamentos, cancelamentos e reagendamentos automáticos com IA avançada",
+                },
+                {
+                  icon: <Phone className="w-8 h-8" />,
+                  title: "Integração WhatsApp",
+                  description: "Comunicação direta, lembretes automáticos e respostas rápidas para perguntas frequentes",
                 },
                 {
                   icon: <FileText className="w-8 h-8" />,
-                  title: "Prontuário customizável",
+                  title: "Prontuário Personalizado",
                   description: "Adaptável a diversas especialidades como medicina, odontologia, nutrição, estética e mais",
                 },
                 {
                   icon: <Calendar className="w-8 h-8" />,
-                  title: "Agenda integrada",
-                  description: "Controle completo sobre os horários e compromissos",
-                },
-                {
-                  icon: <Globe className="w-8 h-8" />,
-                  title: "Landpage inclusa",
-                  description: "Promova sua clínica com uma página personalizada e um chat integrado para atendimento imediato",
+                  title: "Agenda Integrada",
+                  description: "Controle completo sobre horários e compromissos com sincronização em tempo real",
                 },
               ].map((feature, index) => (
                 <div key={index} className="flex gap-6 hover-card-animation p-6 rounded-xl hover:bg-muted/50">
@@ -137,12 +158,12 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {[
                 {
-                  quote: "Nossa clínica aumentou os agendamentos em 35% com o atendimento 24h!",
+                  quote: "Desde que começamos a usar o sistema, nunca foi tão fácil manter nossa agenda organizada!",
                   author: "Dra. Maria Silva",
                   role: "Clínica Saúde Integral",
                 },
                 {
-                  quote: "O chat autônomo facilitou muito a comunicação com nossos pacientes.",
+                  quote: "O chatbot no WhatsApp é incrível! Nossos pacientes amam a praticidade.",
                   author: "Dr. João Santos",
                   role: "Centro Médico Bem-Estar",
                 },
@@ -180,20 +201,35 @@ export default function Home() {
                       name: "Básico",
                       price: "R$ 197",
                       description: "Para clínicas pequenas",
-                      features: ["Agendamento online", "Chat básico", "Prontuário simples", "Suporte por email"],
-                    },
-                    {
-                      name: "Profissional",
-                      price: "R$ 297",
-                      description: "Mais recursos para sua clínica",
-                      features: ["Tudo do plano Básico", "Prontuário customizável", "Integrações avançadas", "Suporte prioritário"],
-                      popular: true,
+                      features: [
+                        "Agendamentos online",
+                        "Chatbot sequencial",
+                        "Landing page personalizada",
+                        "Suporte por email"
+                      ],
                     },
                     {
                       name: "Avançado",
+                      price: "R$ 297",
+                      description: "Mais recursos para sua clínica",
+                      features: [
+                        "Chatbot com IA",
+                        "Integração WhatsApp",
+                        "Lembretes automáticos",
+                        "Suporte prioritário"
+                      ],
+                      popular: true,
+                    },
+                    {
+                      name: "Premium",
                       price: "R$ 497",
                       description: "Para clínicas de grande porte",
-                      features: ["Tudo do plano Profissional", "Suporte prioritário", "API personalizada", "Treinamento exclusivo"],
+                      features: [
+                        "Todas as funcionalidades",
+                        "Suporte técnico prioritário",
+                        "API personalizada",
+                        "Treinamento exclusivo"
+                      ],
                     },
                   ].map((plan, index) => (
                     <Card key={index} className={`relative border-2 hover:border-primary transition-colors hover-card-animation ${plan.popular ? 'border-primary' : ''}`}>
@@ -226,33 +262,76 @@ export default function Home() {
                 </div>
               </TabsContent>
               <TabsContent value="yearly">
-                {/* Similar structure as monthly, with discounted prices */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {[
+                    {
+                      name: "Básico",
+                      price: "R$ 1.970",
+                      description: "Para clínicas pequenas",
+                      features: [
+                        "Agendamentos online",
+                        "Chatbot sequencial",
+                        "Landing page personalizada",
+                        "Suporte por email",
+                        "2 meses grátis"
+                      ],
+                    },
+                    {
+                      name: "Avançado",
+                      price: "R$ 2.970",
+                      description: "Mais recursos para sua clínica",
+                      features: [
+                        "Chatbot com IA",
+                        "Integração WhatsApp",
+                        "Lembretes automáticos",
+                        "Suporte prioritário",
+                        "2 meses grátis"
+                      ],
+                      popular: true,
+                    },
+                    {
+                      name: "Premium",
+                      price: "R$ 4.970",
+                      description: "Para clínicas de grande porte",
+                      features: [
+                        "Todas as funcionalidades",
+                        "Suporte técnico prioritário",
+                        "API personalizada",
+                        "Treinamento exclusivo",
+                        "2 meses grátis"
+                      ],
+                    },
+                  ].map((plan, index) => (
+                    <Card key={index} className={`relative border-2 hover:border-primary transition-colors hover-card-animation ${plan.popular ? 'border-primary' : ''}`}>
+                      {plan.popular && (
+                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
+                          Mais popular
+                        </div>
+                      )}
+                      <CardContent className="pt-6">
+                        <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
+                        <div className="mb-4">
+                          <span className="text-4xl font-bold">{plan.price}</span>
+                          <span className="text-muted-foreground">/ano</span>
+                        </div>
+                        <p className="text-muted-foreground mb-6">{plan.description}</p>
+                        <ul className="space-y-3 mb-6">
+                          {plan.features.map((feature, i) => (
+                            <li key={i} className="flex items-center gap-2">
+                              <Check className="w-4 h-4 text-primary" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                        <Button className="w-full" variant={plan.popular ? "default" : "outline"}>
+                          Começar agora
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </TabsContent>
             </Tabs>
-          </div>
-        </section>
-
-        {/* About Section */}
-        <section id="about" className="section-padding bg-muted/50">
-          <div className="container">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 gradient-text">Sobre Nós</h2>
-              <p className="text-lg text-muted-foreground mb-12">
-                Somos apaixonados por inovação e eficiência. Nosso objetivo é ajudar clínicas a atender melhor seus pacientes com tecnologia de ponta e personalização.
-              </p>
-              <div className="grid grid-cols-3 gap-8">
-                {[
-                  { number: "1000+", label: "Clínicas atendidas" },
-                  { number: "50k+", label: "Consultas agendadas" },
-                  { number: "99%", label: "Satisfação" },
-                ].map((stat, index) => (
-                  <div key={index} className="hover-card-animation">
-                    <p className="text-4xl font-bold gradient-text mb-2">{stat.number}</p>
-                    <p className="text-sm text-muted-foreground">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 
@@ -268,16 +347,16 @@ export default function Home() {
             <div className="max-w-3xl mx-auto space-y-6">
               {[
                 {
-                  question: "Quais especialidades são compatíveis com o prontuário?",
-                  answer: "Nosso prontuário é altamente customizável e atende diversas especialidades, incluindo medicina, odontologia, nutrição, fisioterapia, psicologia e estética.",
+                  question: "Como é feita a configuração da integração com WhatsApp?",
+                  answer: "A configuração é feita em poucos passos, diretamente no painel de administração do sistema.",
                 },
                 {
-                  question: "É difícil integrar o sistema à rotina da minha clínica?",
-                  answer: "Não! Oferecemos um processo de implementação simplificado e treinamento completo para sua equipe, garantindo uma transição suave.",
+                  question: "Os lembretes de consultas podem ser personalizados?",
+                  answer: "Sim, você pode ajustar o texto e os horários para envio dos lembretes.",
                 },
                 {
-                  question: "Como funciona o suporte técnico?",
-                  answer: "Nosso suporte técnico está disponível 24/7 através de chat, e-mail e telefone. Os planos avançados contam com suporte prioritário.",
+                  question: "O software funciona em dispositivos móveis?",
+                  answer: "Sim, é totalmente responsivo e compatível com celulares e tablets.",
                 },
               ].map((faq, index) => (
                 <Card key={index} className="hover-card-animation">

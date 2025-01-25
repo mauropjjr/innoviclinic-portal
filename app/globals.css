@@ -90,11 +90,20 @@
 }
 
 .hero-pattern {
-  background-image: radial-gradient(
-    circle at center,
-    rgba(var(--primary-rgb), 0.1) 0%,
-    rgba(var(--background-rgb), 0.1) 100%
-  );
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.3) 0%, rgba(30, 58, 138, 0.1) 100%);
+  pointer-events: none;
 }
 
 .bg-grid-white {
@@ -106,4 +115,15 @@
 /* Smooth Scroll */
 html {
   scroll-behavior: smooth;
+}
+
+.macbook-container {
+  @apply relative w-full max-w-5xl mx-auto mt-12;
+  perspective: 1000px;
+}
+
+.macbook-image {
+  @apply w-full h-auto transform transition-transform duration-500;
+  transform: rotateX(5deg);
+  filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
 }

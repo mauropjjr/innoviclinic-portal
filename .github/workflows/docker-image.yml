@@ -1,0 +1,36 @@
+name: Integração Continua INNOVCLINIC - Portal
+on:
+  push:
+     branches: [ "*" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Adicionando daemon do docker
+      run: |
+        echo '{ "insecure-registries": ["213.199.34.152:32768", "localhost:32768"] }' | sudo tee /etc/docker/daemon.json
+        echo cat /etc/docker/daemon.json 
+        sudo systemctl stop docker
+        sudo systemctl start docker
+    - name: Construção da imgem
+      run: | 
+        docker build -t 213.199.34.152:32768/innovclinic-portal:latest  .
+        docker push 213.199.34.152:32768/innovclinic-portal:latest
+
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: [build]
+  #   steps:
+  #     - name: Atualizando maquina no serviodr - deploy
+  #       uses: appleboy/ssh-action@v1.0.3
+  #       with:
+  #         host: 213.199.34.152
+  #         username: devs
+  #         password: Devs@20242024
+  #         port: 22
+  #         script: |
+  #           docker pull 213.199.34.152:32768/innovclinic-portal:latest
+  #           docker stack deploy -c /containers/innoviclinic-chatbot-ia.stack.yml innoviclinic-portal
+
